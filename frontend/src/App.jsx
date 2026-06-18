@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./modules/common/Home";
 import Login from "./modules/common/Login";
 import Register from "./modules/common/Register";
@@ -47,13 +47,13 @@ function App() {
           <Route path='/adminhome' element={<AdminHome />} />
           <Route path='/ownerhome' element={<OwnerHome />} />
           <Route path='/renterhome' element={<RenterHome />} />
-          <Route path='/getallbookings' element={<AdminAllBookings />} />
-          <Route path='/getallproperties' element={<AdminAllProperty />} />
+          <Route path='/admin/bookings' element={<AdminAllBookings />} />
+          <Route path='/admin/properties' element={<AdminAllProperty />} />
           <Route path='/getallusers' element={<AllUsers />} />
           <Route path='/postproperty' element={<AddProperty />} />
-          <Route path='/getallbookings' element={<OwnerAllBookings />} />
-          <Route path='/getallproperties' element={<OwnerAllProperties />} />
-          <Route path='/getallbookings' element={<RenterAllProperty />} />
+          <Route path='/owner/bookings' element={<OwnerAllBookings />} />
+          <Route path='/owner/properties' element={<OwnerAllProperties />} />
+          <Route path='/renter/bookings' element={<RenterAllProperty />} />
           <Route path='/getAllProperties' element={<AllPropertiesCards />} />
         </Routes>
       </BrowserRouter>
