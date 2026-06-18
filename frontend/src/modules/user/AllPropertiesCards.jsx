@@ -85,19 +85,20 @@ const AllPropertiesCards = ({ loggedIn }) => {
       )}
 
       {/* Filters */}
-      <div className="flex gap-4 items-center mb-6">
-        <input
-          type="text"
-          placeholder="Search by Address"
-          value={filterPropertyAddress}
-          onChange={(e) => setPropertyAddress(e.target.value)}
-          className="bg-gray-800/70 border border-gray-700 p-2 rounded w-1/3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
-        />
-        <select
-          value={filterPropertyAdType}
-          onChange={(e) => setPropertyAdType(e.target.value)}
-          className="bg-gray-800/70 border border-gray-700 p-2 rounded text-white focus:ring-2 focus:ring-indigo-500"
-        >
+      <div className="grid gap-4 mb-8 p-4 bg-slate-950/85 border border-indigo-500/10 rounded-[2rem] shadow-[0_30px_80px_-50px_rgba(99,102,241,0.45)] backdrop-blur-xl">
+        <div className="grid md:grid-cols-3 gap-4">
+          <input
+            type="text"
+            placeholder="Search by address"
+            value={filterPropertyAddress}
+            onChange={(e) => setPropertyAddress(e.target.value)}
+            className="bg-slate-900/90 border border-indigo-500/20 p-4 rounded-2xl text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500"
+          />
+          <select
+            value={filterPropertyAdType}
+            onChange={(e) => setPropertyAdType(e.target.value)}
+            className="bg-slate-900/90 border border-indigo-500/20 p-4 rounded-2xl text-white focus:ring-2 focus:ring-indigo-500"
+          >
           <option value="">All Ad Types</option>
           <option value="sale">Sale</option>
           <option value="rent">Rent</option>
@@ -105,7 +106,7 @@ const AllPropertiesCards = ({ loggedIn }) => {
         <select
           value={filterPropertyType}
           onChange={(e) => setPropertyType(e.target.value)}
-          className="bg-gray-800/70 border border-gray-700 p-2 rounded text-white focus:ring-2 focus:ring-indigo-500"
+          className="bg-slate-900/90 border border-indigo-500/20 p-4 rounded-2xl text-white focus:ring-2 focus:ring-indigo-500"
         >
           <option value="">All Types</option>
           <option value="commercial">Commercial</option>

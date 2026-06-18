@@ -46,39 +46,51 @@ const Home = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative w-full h-[70vh] mt-16 overflow-hidden">
+      <div className="relative w-full min-h-[72vh] mt-16 overflow-hidden">
         {images.map((img, idx) => (
           <div
             key={idx}
-            className={`absolute w-full h-full transition-opacity duration-1000 ${currentIndex === idx ? "opacity-100" : "opacity-0"
-              }`}
+            className={`absolute inset-0 transition-opacity duration-1200 ${currentIndex === idx ? "opacity-100" : "opacity-0"}`}
           >
             <img src={img} alt={`Slide ${idx}`} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/20 to-transparent" />
           </div>
         ))}
 
-        {/* Center Text */}
-        <div className="absolute bottom-20 w-full text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow-lg mb-4 animate-fadeIn">
-            Find Your Dream Rental Property
-          </h1>
-          <p className="text-lg md:text-xl font-light drop-shadow-md text-gray-200">
-            Comfort, Convenience & Class — All in One Place
-          </p>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,102,241,0.18),_transparent_26%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.14),_transparent_20%)]" />
+
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="relative max-w-4xl w-full rounded-[2rem] border border-white/10 bg-slate-950/75 p-10 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.95)] backdrop-blur-xl">
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-indigo-500/10 via-transparent to-violet-500/10 pointer-events-none" />
+            <div className="relative text-center">
+              <p className="uppercase tracking-[0.32em] text-xs text-indigo-300/70 mb-4">
+                Trusted rentals, built for modern living
+              </p>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-5">
+                Discover premium rental properties with effortless booking.
+              </h1>
+              <p className="mx-auto max-w-2xl text-slate-300 text-base md:text-lg leading-relaxed mb-8">
+                Browse curated homes, get instant owner info, and book with confidence across apartments, commercial spaces, and land plots.
+              </p>
+              <div className="inline-flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 px-8 py-3 text-white font-semibold shadow-xl shadow-indigo-500/20 hover:from-indigo-400 hover:to-violet-400 transition">
+                  Explore Properties
+                </button>
+                <button className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 py-3 text-white/90 font-medium hover:bg-white/10 transition">
+                  List Your Property
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Dots */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3">
           {images.map((_, idx) => (
             <button
               key={idx}
               onClick={() => goToSlide(idx)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${currentIndex === idx
-                  ? "bg-indigo-400 scale-125 shadow-lg"
-                  : "bg-gray-400 hover:bg-indigo-300"
-                }`}
-            ></button>
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === idx ? "bg-indigo-400 shadow-[0_0_0_8px_rgba(99,102,241,0.12)]" : "bg-slate-400/60 hover:bg-indigo-300"}`}
+            />
           ))}
         </div>
       </div>
