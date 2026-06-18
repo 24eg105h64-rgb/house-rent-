@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../apiConfig";
 import Toast from "../common/Toast";
-
-axios.defaults.withCredentials = true;
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -37,11 +35,7 @@ const ForgotPassword = () => {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:8001/api/user/forgotpassword",
-        data,
-        { withCredentials: true }
-      );
+      const res = await axios.post("/api/user/forgotpassword", data);
 
       if (res.data.success) {
         showToast("Your password has been changed!");

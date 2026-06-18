@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../apiConfig";
 import Toast from "../common/Toast";
 import { useNavigate } from "react-router-dom";
-
-
-axios.defaults.withCredentials = true;
 
 const AllUsers = () => {
   const [allUser, setAllUser] = useState([]);
@@ -21,9 +18,7 @@ const AllUsers = () => {
 
   const getAllUser = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:8001/api/admin/getallusers"
-      );
+      const response = await axios.get("/api/admin/getallusers");
       if (response.data.success) {
         setAllUser(response.data.data);
       } else {
@@ -43,10 +38,7 @@ const AllUsers = () => {
 
   const handleStatus = async (userid, status) => {
     try {
-      const res = await axios.post(
-        "http://localhost:8001/api/admin/handlestatus",
-        { userid, status }
-      );
+      const res = await axios.post("/api/admin/handlestatus", { userid, status });
 
       if (res.data.success) {
         showToast("success", "Status updated successfully");

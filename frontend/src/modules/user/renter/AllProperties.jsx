@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../../apiConfig";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -9,10 +9,7 @@ const RenterAllProperty = () => {
 
   const getAllProperty = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:8001/api/user/getallbookings",
-        { withCredentials: true }
-      );
+      const response = await axios.get("/api/user/getallbookings");
 
       if (response.data.success) {
         setAllProperties(response.data.data);

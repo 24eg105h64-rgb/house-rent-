@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../apiConfig";
 import Toast from "../common/Toast";
-
-axios.defaults.withCredentials = true;
 
 
 const Register = () => {
@@ -34,9 +32,8 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8001/api/user/register",
-        data,
-        { withCredentials: true }
+        "/api/user/register",
+        data
       );
 
       if (response.data.success) {
