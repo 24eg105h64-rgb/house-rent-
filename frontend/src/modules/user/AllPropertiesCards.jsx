@@ -174,51 +174,51 @@ const AllPropertiesCards = ({ loggedIn }) => {
 
       {/* Booking Modal */}
       {showModal && selectedProperty && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50 backdrop-blur-sm">
-          <div className="bg-gray-900 p-6 rounded-lg w-full max-w-2xl relative border border-gray-700 shadow-xl">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50 backdrop-blur-sm px-4">
+          <div className="bg-slate-950/95 p-6 rounded-[2rem] w-full max-w-2xl relative border border-indigo-500/10 shadow-2xl shadow-indigo-950/30 backdrop-blur-2xl">
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-white"
+              className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-900/60 rounded-full p-2 transition"
             >
               ✖
             </button>
-            <h3 className="text-xl font-bold mb-4 text-white">Property Info</h3>
+            <h3 className="text-2xl font-bold mb-4 text-white">Property Info</h3>
             <img
               src={`${process.env.VITE_API_URL || "http://localhost:8001"}${selectedProperty.propertyImage[0]?.path}`}
               alt="Property"
-              className="w-full h-48 object-cover rounded mb-4"
+              className="w-full h-52 object-cover rounded-3xl mb-5 shadow-inner"
             />
-            <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
-              <div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm text-slate-300">
+              <div className="space-y-2">
                 <p>
-                  <b>Owner Contact:</b> {selectedProperty.ownerContact}
+                  <span className="font-semibold text-slate-100">Owner Contact:</span> {selectedProperty.ownerContact}
                 </p>
                 <p>
-                  <b>Availability:</b> {selectedProperty.isAvailable}
+                  <span className="font-semibold text-slate-100">Availability:</span> {selectedProperty.isAvailable}
                 </p>
                 <p>
-                  <b>Price:</b> ₹{selectedProperty.propertyAmt}
+                  <span className="font-semibold text-slate-100">Price:</span> ₹{selectedProperty.propertyAmt}
                 </p>
               </div>
-              <div>
+              <div className="space-y-2">
                 <p>
-                  <b>Location:</b> {selectedProperty.propertyAddress}
+                  <span className="font-semibold text-slate-100">Location:</span> {selectedProperty.propertyAddress}
                 </p>
                 <p>
-                  <b>Type:</b> {selectedProperty.propertyType}
+                  <span className="font-semibold text-slate-100">Type:</span> {selectedProperty.propertyType}
                 </p>
                 <p>
-                  <b>Ad Type:</b> {selectedProperty.propertyAdType}
+                  <span className="font-semibold text-slate-100">Ad Type:</span> {selectedProperty.propertyAdType}
                 </p>
               </div>
             </div>
-            <p className="mt-2 text-sm text-gray-300">
-              <b>Additional Info:</b> {selectedProperty.additionalInfo}
+            <p className="mt-4 text-sm text-slate-300 border-l-2 border-indigo-500/30 pl-4">
+              <span className="font-semibold text-slate-100">Additional Info:</span> {selectedProperty.additionalInfo}
             </p>
 
             {/* Booking Form */}
             <form
-              className="mt-4 space-y-2"
+              className="mt-6 space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
                 handleBooking("pending", selectedProperty._id, selectedProperty.ownerId);
@@ -229,7 +229,7 @@ const AllPropertiesCards = ({ loggedIn }) => {
                 name="fullName"
                 placeholder="Your Full Name"
                 required
-                className="bg-gray-800 border border-gray-700 p-2 w-full rounded text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
+                className="bg-slate-900/90 border border-indigo-500/20 p-3 w-full rounded-2xl text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 transition"
                 value={userDetails.fullName}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, fullName: e.target.value })
@@ -240,7 +240,7 @@ const AllPropertiesCards = ({ loggedIn }) => {
                 name="phone"
                 placeholder="Phone Number"
                 required
-                className="bg-gray-800 border border-gray-700 p-2 w-full rounded text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
+                className="bg-slate-900/90 border border-indigo-500/20 p-3 w-full rounded-2xl text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 transition"
                 value={userDetails.phone}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, phone: e.target.value })
@@ -248,7 +248,7 @@ const AllPropertiesCards = ({ loggedIn }) => {
               />
               <button
                 type="submit"
-                className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+                className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 rounded-2xl font-semibold shadow-xl shadow-emerald-500/20 hover:from-emerald-400 hover:to-teal-400 transition"
               >
                 Book Property
               </button>

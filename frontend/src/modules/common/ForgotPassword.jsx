@@ -27,11 +27,11 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     if (!data.email || !data.password || !data.confirmPassword) {
-      showToast("Please fill all fields");
+      return showToast("error", "Please fill all fields");
     }
 
     if (data.password !== data.confirmPassword) {
-       showToast("Passwords do not match");
+       return showToast("error", "Passwords do not match");
     }
 
     try {
