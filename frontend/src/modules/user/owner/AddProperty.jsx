@@ -86,8 +86,8 @@ function AddProperty() {
   };;
 
   return (
- <div className="max-w-5xl mx-auto bg-gray-900/80 border border-gray-700 backdrop-blur-md shadow-2xl rounded-xl p-8 mt-12 text-white">
-  <h2 className="text-3xl font-extrabold text-indigo-400 mb-8 text-center tracking-wide">
+ <div className="max-w-5xl mx-auto bg-slate-950/90 border border-indigo-500/10 backdrop-blur-2xl shadow-[0_30px_80px_-40px_rgba(15,23,42,0.95)] rounded-[2rem] p-8 mt-12 text-white">
+  <h2 className="text-3xl font-extrabold text-indigo-300 mb-8 text-center tracking-wide">
     Add New Property
   </h2>
 
@@ -95,14 +95,14 @@ function AddProperty() {
     {/* Row 1 */}
     <div className="grid md:grid-cols-3 gap-6">
       <div>
-        <label className="block font-medium mb-2 text-gray-300">
+        <label className="block font-medium mb-2 text-slate-300">
           Property Type
         </label>
         <select
           name="propertyType"
           value={propertyDetails.propertyType}
           onChange={handleChange}
-          className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+          className="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
         >
           <option disabled>Choose...</option>
           <option value="residential">Residential</option>
@@ -112,14 +112,14 @@ function AddProperty() {
       </div>
 
       <div>
-        <label className="block font-medium mb-2 text-gray-300">
+        <label className="block font-medium mb-2 text-slate-300">
           Property Ad Type
         </label>
         <select
           name="propertyAdType"
           value={propertyDetails.propertyAdType}
           onChange={handleChange}
-          className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+          className="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
         >
           <option disabled>Choose...</option>
           <option value="rent">Rent</option>
@@ -128,7 +128,7 @@ function AddProperty() {
       </div>
 
       <div>
-        <label className="block font-medium mb-2 text-gray-300">
+        <label className="block font-medium mb-2 text-slate-300">
           Property Full Address
         </label>
         <input
@@ -138,7 +138,7 @@ function AddProperty() {
           onChange={handleChange}
           placeholder="Address"
           required
-          className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+          className="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
         />
       </div>
     </div>
@@ -146,7 +146,7 @@ function AddProperty() {
     {/* Row 2 */}
     <div className="grid md:grid-cols-3 gap-6">
       <div>
-        <label className="block font-medium mb-2 text-gray-300">
+        <label className="block font-medium mb-2 text-slate-300">
           Property Images
         </label>
         <input
@@ -155,12 +155,12 @@ function AddProperty() {
           multiple
           required
           onChange={handleImageChange}
-          className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-3 py-2 cursor-pointer text-white file:mr-3 file:px-3 file:py-1 file:rounded-md file:border-0 file:bg-indigo-600 file:text-white hover:file:bg-indigo-700"
+          className="w-full bg-slate-900/90 border border-indigo-500/20 rounded-2xl px-3 py-3 cursor-pointer text-white file:mr-3 file:px-3 file:py-2 file:rounded-full file:border-0 file:bg-indigo-500 file:text-white hover:file:bg-indigo-400"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-2 text-gray-300">
+        <label className="block font-medium mb-2 text-slate-300">
           Owner Contact No.
         </label>
         <input
@@ -170,12 +170,12 @@ function AddProperty() {
           onChange={handleChange}
           placeholder="Contact number"
           required
-          className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+          className="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-2 text-gray-300">
+        <label className="block font-medium mb-2 text-slate-300">
           Property Amount
         </label>
         <input
@@ -185,14 +185,14 @@ function AddProperty() {
           onChange={handleChange}
           placeholder="Amount"
           required
-          className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+          className="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
         />
       </div>
     </div>
 
     {/* Row 3 */}
     <div>
-      <label className="block font-medium mb-2 text-gray-300">
+      <label className="block font-medium mb-2 text-slate-300">
         Additional Details for the Property
       </label>
       <textarea
@@ -201,7 +201,7 @@ function AddProperty() {
         onChange={handleChange}
         rows={4}
         placeholder="Add any details here..."
-        className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+        className="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
       />
     </div>
 
@@ -209,7 +209,7 @@ function AddProperty() {
     <div className="text-right">
       <button
         type="submit"
-        className="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-200"
+        className="bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-semibold px-6 py-3 rounded-full shadow-xl hover:from-indigo-400 hover:to-violet-400 transition duration-200"
       >
         Submit Form
       </button>

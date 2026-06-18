@@ -22,6 +22,12 @@ const Home = () => {
     setCurrentIndex(index);
   };
 
+  const statItems = [
+    { label: "Verified Listings", value: "1,250+" },
+    { label: "Trusted Owners", value: "420+" },
+    { label: "Instant Bookings", value: "98%" },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-white">
       {/* Navbar */}
@@ -57,7 +63,7 @@ const Home = () => {
           </div>
         ))}
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,102,241,0.18),_transparent_26%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.14),_transparent_20%)]" />
+        <div className="absolute inset-0 hero-overlay" />
 
         <div className="absolute inset-0 flex items-center justify-center px-4">
           <div className="relative max-w-4xl w-full rounded-[2rem] border border-white/10 bg-slate-950/75 p-10 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.95)] backdrop-blur-xl">
@@ -73,12 +79,18 @@ const Home = () => {
                 Browse curated homes, get instant owner info, and book with confidence across apartments, commercial spaces, and land plots.
               </p>
               <div className="inline-flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 px-8 py-3 text-white font-semibold shadow-xl shadow-indigo-500/20 hover:from-indigo-400 hover:to-violet-400 transition">
+                <Link
+                  to="#properties"
+                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 px-8 py-3 text-white font-semibold shadow-xl shadow-indigo-500/20 hover:from-indigo-400 hover:to-violet-400 transition"
+                >
                   Explore Properties
-                </button>
-                <button className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 py-3 text-white/90 font-medium hover:bg-white/10 transition">
+                </Link>
+                <Link
+                  to="/register"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 py-3 text-white/90 font-medium hover:bg-white/10 transition"
+                >
                   List Your Property
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -95,8 +107,20 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Properties Section */}
-      <div className="max-w-7xl mx-auto w-full py-20 px-6">
+      <div className="max-w-7xl mx-auto w-full py-14 px-6">
+        <div className="grid gap-5 md:grid-cols-3 mb-10">
+          {statItems.map((item) => (
+            <div key={item.label} className="glass-panel p-6 rounded-[1.75rem] border border-indigo-500/10 shadow-[0_30px_80px_-50px_rgba(99,102,241,0.35)]">
+              <p className="text-sm uppercase tracking-[0.3em] text-indigo-300/80 mb-3">
+                {item.label}
+              </p>
+              <p className="text-3xl md:text-4xl font-extrabold text-white">
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/70 p-10 shadow-2xl shadow-indigo-950/20 backdrop-blur-xl">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,_102,_241,_0.24),_transparent_30%),_radial-gradient(circle_at_bottom_right,_rgba(168,_85,_247,_0.18),_transparent_22%)]"></div>
           <div className="relative text-center">
@@ -118,7 +142,7 @@ const Home = () => {
         </div>
 
         {/* Property Cards */}
-        <div className="mt-12">
+        <div className="mt-12" id="properties">
           <AllPropertiesCards />
         </div>
       </div>

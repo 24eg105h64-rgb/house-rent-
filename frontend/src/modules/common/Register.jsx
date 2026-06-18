@@ -79,14 +79,37 @@ const Register = () => {
 
       {/* Register Form */}
       <div className="flex-grow flex items-center justify-center px-4 py-24">
-        <div className="bg-slate-950/95 border border-indigo-500/10 backdrop-blur-2xl shadow-2xl rounded-[2rem] w-full max-w-md p-10 ring-1 ring-indigo-500/10">
+        <div className="grid w-full max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="hidden rounded-[2rem] border border-indigo-500/10 bg-slate-950/90 p-10 shadow-2xl shadow-indigo-950/20 backdrop-blur-xl lg:flex lg:flex-col lg:justify-between">
+            <div>
+              <p className="uppercase tracking-[0.3em] text-xs text-indigo-300/70 mb-5">
+                RentEase Registration
+              </p>
+              <h2 className="text-3xl font-extrabold text-white mb-4">
+                Join the modern rental network
+              </h2>
+              <p className="text-slate-300 leading-relaxed">
+                Create an account to manage listings, find premium rentals, and stay connected with verified owners across your city.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="rounded-3xl bg-slate-900/70 p-5 border border-white/10">
+                <p className="text-sm uppercase tracking-[0.3em] text-indigo-300/70">Quick Setup</p>
+                <p className="mt-2 text-slate-300">Sign up in seconds and start exploring instantly.</p>
+              </div>
+              <div className="rounded-3xl bg-slate-900/70 p-5 border border-white/10">
+                <p className="text-sm uppercase tracking-[0.3em] text-indigo-300/70">Verified Owners</p>
+                <p className="mt-2 text-slate-300">List properties with confidence.</p>
+              </div>
+            </div>
+          </div>
+          <div className="glass-panel w-full rounded-[2rem] border border-indigo-500/10 backdrop-blur-2xl shadow-2xl shadow-indigo-950/20 p-10 ring-1 ring-indigo-500/10">
           <div className="text-center mb-6">
             <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/25 to-violet-500/20 text-indigo-300 text-3xl font-bold shadow-lg shadow-indigo-500/10">
               📝
             </div>
-            <h1 className="text-2xl font-semibold mt-4 text-white">
-              Sign Up
-            </h1>
+            <h1 className="text-3xl font-semibold mt-4 text-white">Sign Up</h1>
+            <p className="text-slate-400 mt-2">Create your account and unlock the RentEase dashboard.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -144,6 +167,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

@@ -114,6 +114,7 @@ const AllPropertiesCards = ({ loggedIn }) => {
           <option value="residential">Residential</option>
         </select>
       </div>
+    </div>
 
       {/* Property Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -124,9 +124,9 @@ const OwnerAllProperties = () => {
 
   return (
    <div className="p-6">
-  <div className="overflow-x-auto rounded-lg shadow-2xl border border-gray-700 bg-gray-900/80 backdrop-blur-md">
-    <table className="w-full text-sm text-left text-gray-300">
-      <thead className="bg-indigo-600/80 text-white">
+  <div className="overflow-x-auto rounded-[2rem] border border-indigo-500/10 bg-slate-950/90 backdrop-blur-2xl shadow-[0_30px_70px_-30px_rgba(15,23,42,0.9)] p-4">
+    <table className="w-full text-sm text-left text-slate-300 rounded-[1.5rem] overflow-hidden">
+      <thead className="bg-gradient-to-r from-indigo-500/80 to-violet-500/70 text-white">
         <tr>
           <th className="px-4 py-3">Property ID</th>
           <th className="px-4 py-3 text-center">Property Type</th>
@@ -142,7 +142,7 @@ const OwnerAllProperties = () => {
         {allProperties.map((property) => (
           <tr
             key={property._id}
-            className="border-b border-gray-700 hover:bg-gray-800/60 transition duration-200"
+            className="border-b border-slate-700 hover:bg-indigo-500/10 transition duration-200"
           >
             <td className="px-4 py-3">{property._id}</td>
             <td className="px-4 py-3 text-center">{property.propertyType}</td>
@@ -181,9 +181,9 @@ const OwnerAllProperties = () => {
 
   {/* Edit Modal */}
   {show && (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm z-50">
-      <div className="bg-gray-900/90 border border-gray-700 text-white w-full max-w-xl p-6 rounded-xl shadow-2xl">
-        <h3 className="text-2xl font-bold mb-6 text-indigo-400">Edit Property</h3>
+    <div className="fixed inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm z-50 px-4">
+      <div className="bg-slate-950/95 border border-indigo-500/10 text-white w-full max-w-xl p-6 rounded-[2rem] shadow-[0_30px_90px_-40px_rgba(15,23,42,0.9)]">
+        <h3 className="text-2xl font-bold mb-6 text-indigo-300">Edit Property</h3>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -197,7 +197,7 @@ const OwnerAllProperties = () => {
             value={editingPropertyData.propertyType}
             onChange={handleChange}
             placeholder="Property Type"
-            className="border border-gray-700 bg-gray-800/70 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+            className="border border-slate-700 bg-slate-900/75 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
           />
           <input
             type="text"
@@ -205,7 +205,7 @@ const OwnerAllProperties = () => {
             value={editingPropertyData.propertyAdType}
             onChange={handleChange}
             placeholder="Ad Type"
-            className="border border-gray-700 bg-gray-800/70 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+            className="border border-slate-700 bg-slate-900/75 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
           />
           <input
             type="text"
@@ -213,7 +213,7 @@ const OwnerAllProperties = () => {
             value={editingPropertyData.propertyAddress}
             onChange={handleChange}
             placeholder="Property Address"
-            className="border border-gray-700 bg-gray-800/70 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+            className="border border-slate-700 bg-slate-900/75 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
           />
           <input
             type="text"
@@ -221,7 +221,7 @@ const OwnerAllProperties = () => {
             value={editingPropertyData.ownerContact}
             onChange={handleChange}
             placeholder="Owner Contact"
-            className="border border-gray-700 bg-gray-800/70 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+            className="border border-slate-700 bg-slate-900/75 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
           />
           <input
             type="number"
@@ -229,27 +229,27 @@ const OwnerAllProperties = () => {
             value={editingPropertyData.propertyAmt}
             onChange={handleChange}
             placeholder="Property Amount"
-            className="border border-gray-700 bg-gray-800/70 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+            className="border border-slate-700 bg-slate-900/75 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
           />
           <textarea
             name="additionalInfo"
             value={editingPropertyData.additionalInfo}
             onChange={handleChange}
             placeholder="Additional Info"
-            className="border border-gray-700 bg-gray-800/70 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-gray-400"
+            className="border border-slate-700 bg-slate-900/75 text-white px-3 py-2 w-full rounded-lg focus:ring-2 focus:ring-indigo-500 placeholder-slate-400"
           />
           <input
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-            className="border border-gray-700 bg-gray-800/70 text-white px-3 py-2 w-full rounded-lg cursor-pointer file:mr-3 file:px-3 file:py-1 file:rounded-md file:border-0 file:bg-indigo-600 file:text-white hover:file:bg-indigo-700"
+            className="border border-indigo-500/20 bg-slate-900/90 text-white px-3 py-3 w-full rounded-2xl cursor-pointer file:mr-3 file:px-3 file:py-2 file:rounded-full file:border-0 file:bg-indigo-500 file:text-white hover:file:bg-indigo-400"
           />
 
           <div className="flex justify-end gap-3 mt-4">
             <button
               type="button"
               onClick={handleClose}
-              className="px-4 py-2 border border-gray-600 rounded-lg hover:bg-gray-700/50 transition"
+              className="px-4 py-2 border border-slate-700 rounded-lg hover:bg-slate-800/60 transition"
             >
               Cancel
             </button>

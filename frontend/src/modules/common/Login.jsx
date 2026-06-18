@@ -96,48 +96,78 @@ const Login = () => {
 
       {/* Login Form */}
       <div className="flex-grow flex items-center justify-center px-4 py-24">
-        <div className="bg-slate-950/95 border border-indigo-500/10 backdrop-blur-2xl shadow-2xl rounded-[2rem] w-full max-w-md p-10 ring-1 ring-indigo-500/10">
-          <div className="text-center mb-6">
-            <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/25 to-violet-500/20 text-indigo-300 text-3xl font-bold shadow-lg shadow-indigo-500/10">
-              🔒
+        <div className="grid w-full max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="hidden rounded-[2rem] border border-indigo-500/10 bg-slate-950/90 p-10 shadow-2xl shadow-indigo-950/20 backdrop-blur-xl lg:flex lg:flex-col lg:justify-between">
+            <div>
+              <p className="uppercase tracking-[0.3em] text-xs text-indigo-300/70 mb-5">
+                RentEase Access
+              </p>
+              <h2 className="text-3xl font-extrabold text-white mb-4">
+                Welcome Back
+              </h2>
+              <p className="text-slate-300 leading-relaxed">
+                Secure your next rental or manage your listings with a modern dashboard crafted for owners, renters, and admins.
+              </p>
             </div>
-            <h1 className="text-2xl font-semibold mt-4 text-white">Sign In</h1>
+            <div className="space-y-4">
+              <div className="rounded-3xl bg-slate-900/70 p-5 border border-white/10">
+                <p className="text-sm uppercase tracking-[0.3em] text-indigo-300/70">Fast Booking</p>
+                <p className="mt-2 text-slate-300">Instant booking flow with owner contact details.</p>
+              </div>
+              <div className="rounded-3xl bg-slate-900/70 p-5 border border-white/10">
+                <p className="text-sm uppercase tracking-[0.3em] text-indigo-300/70">Trusted Listings</p>
+                <p className="mt-2 text-slate-300">Verified owners and consistent rental availability.</p>
+              </div>
+              <div className="rounded-3xl bg-slate-900/70 p-5 border border-white/10">
+                <p className="text-sm uppercase tracking-[0.3em] text-indigo-300/70">Secure Access</p>
+                <p className="mt-2 text-slate-300">Cookie-based authentication and secure user sessions.</p>
+              </div>
+            </div>
           </div>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <input
-              type="email"
-              name="email"
-              value={data.email}
-              onChange={handleChange}
-              placeholder="Email Address"
-              className="w-full px-4 py-3 bg-slate-900/90 border border-indigo-500/20 text-white rounded-2xl shadow-sm shadow-indigo-950/10 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500 transition"
-            />
-            <input
-              type="password"
-              name="password"
-              value={data.password}
-              onChange={handleChange}
-              placeholder="Password"
-              className="w-full px-4 py-3 bg-slate-900/90 border border-indigo-500/20 text-white rounded-2xl shadow-sm shadow-indigo-950/10 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500 transition"
-            />
-
-            <button
-              type="submit"
-              className="w-full bg-indigo-500 text-white py-3 rounded-2xl font-semibold shadow-xl shadow-indigo-500/20 hover:bg-indigo-400 transition duration-200"
-            >
-              Sign In
-            </button>
-
-            <div className="flex justify-between text-sm mt-4">
-              <Link to="/forgotpassword" className="text-red-400 hover:underline">
-                Forgot Password?
-              </Link>
-              <Link to="/register" className="text-indigo-400 hover:underline">
-                Create an Account
-              </Link>
+          <div className="glass-panel w-full rounded-[2rem] border border-indigo-500/10 backdrop-blur-2xl shadow-2xl shadow-indigo-950/20 p-10 ring-1 ring-indigo-500/10">
+            <div className="text-center mb-6">
+              <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/25 to-violet-500/20 text-indigo-300 text-3xl font-bold shadow-lg shadow-indigo-500/10">
+                🔒
+              </div>
+              <h1 className="text-3xl font-semibold mt-4 text-white">Sign In</h1>
+              <p className="text-slate-400 mt-2">Access your dashboard, bookings, and property listings.</p>
             </div>
-          </form>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <input
+                type="email"
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+                placeholder="Email Address"
+                className="w-full px-4 py-3 bg-slate-900/90 border border-indigo-500/20 text-white rounded-2xl shadow-sm shadow-indigo-950/10 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500 transition"
+              />
+              <input
+                type="password"
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+                placeholder="Password"
+                className="w-full px-4 py-3 bg-slate-900/90 border border-indigo-500/20 text-white rounded-2xl shadow-sm shadow-indigo-950/10 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500 transition"
+              />
+
+              <button
+                type="submit"
+                className="w-full bg-indigo-500 text-white py-3 rounded-2xl font-semibold shadow-xl shadow-indigo-500/20 hover:bg-indigo-400 transition duration-200"
+              >
+                Sign In
+              </button>
+
+              <div className="flex justify-between text-sm mt-4">
+                <Link to="/forgotpassword" className="text-red-400 hover:underline">
+                  Forgot Password?
+                </Link>
+                <Link to="/register" className="text-indigo-400 hover:underline">
+                  Create an Account
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
