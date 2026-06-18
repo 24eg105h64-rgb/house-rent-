@@ -63,20 +63,20 @@ const ForgotPassword = () => {
         />
       )}
       {/* Navbar */}
-     <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-lg shadow-md py-4 px-8 flex justify-between items-center">
-             <h2 className="text-3xl font-extrabold text-indigo-400 tracking-wide">
+     <nav className="fixed top-0 left-0 w-full z-50 bg-slate-950/70 backdrop-blur-2xl border-b border-slate-700/40 py-4 px-8 flex justify-between items-center shadow-2xl shadow-indigo-950/15">
+             <h2 className="text-3xl font-extrabold text-indigo-300 tracking-wide">
                RentEase
              </h2>
              <div className="space-x-8 text-lg">
-               <Link to="/" className="text-gray-200 hover:text-indigo-400 transition">
+               <Link to="/" className="text-slate-200 hover:text-indigo-300 transition">
                  Home
                </Link>
-               <Link to="/login" className="text-gray-200 hover:text-indigo-400 transition">
+               <Link to="/login" className="text-slate-200 hover:text-indigo-300 transition">
                  Login
                </Link>
                <Link
                  to="/register"
-                 className="text-black bg-indigo-400 px-4 py-2 rounded-lg shadow hover:bg-indigo-500 transition"
+                 className="text-white bg-gradient-to-r from-indigo-500 to-violet-500 px-4 py-2 rounded-full shadow-xl shadow-indigo-500/20 hover:from-indigo-400 hover:to-violet-400 transition"
                >
                  Register
                </Link>
