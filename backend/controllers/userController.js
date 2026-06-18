@@ -59,7 +59,7 @@ const loginController = async (req, res) => {
         .send({ message: "Invalid email or password", success: false });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
 

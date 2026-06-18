@@ -10,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
         .send({ message: "No token found in cookies", success: false });
     }
 
-    jwt.verify(token, process.env.JWT_KEY, (err, decode) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
       if (err) {
         return res
           .status(200)
