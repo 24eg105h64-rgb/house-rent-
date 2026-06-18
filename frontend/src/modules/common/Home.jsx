@@ -23,22 +23,22 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black">
+    <div className="min-h-screen flex flex-col bg-transparent text-white">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-lg shadow-md py-4 px-8 flex justify-between items-center">
-        <h2 className="text-3xl font-extrabold text-indigo-400 tracking-wide">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-slate-950/40 backdrop-blur-xl border-b border-slate-700/40 py-4 px-8 flex justify-between items-center shadow-2xl shadow-indigo-950/20">
+        <h2 className="text-3xl font-extrabold text-indigo-300 tracking-wide">
           RentEase
         </h2>
         <div className="space-x-8 text-lg">
-          <Link to="/" className="text-gray-200 hover:text-indigo-400 transition">
+          <Link to="/" className="text-slate-200 hover:text-indigo-300 transition">
             Home
           </Link>
-          <Link to="/login" className="text-gray-200 hover:text-indigo-400 transition">
+          <Link to="/login" className="text-slate-200 hover:text-indigo-300 transition">
             Login
           </Link>
           <Link
             to="/register"
-            className="text-black bg-indigo-400 px-4 py-2 rounded-lg shadow hover:bg-indigo-500 transition"
+            className="text-slate-950 bg-indigo-400 px-4 py-2 rounded-full shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 transition"
           >
             Register
           </Link>
@@ -85,19 +85,24 @@ const Home = () => {
 
       {/* Properties Section */}
       <div className="max-w-7xl mx-auto w-full py-20 px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Explore Our Premium Properties
-          </h1>
-          <p className="text-gray-300 font-medium text-lg max-w-2xl mx-auto">
-            Looking to post your property?
-            <Link
-              to="/register"
-              className="ml-2 px-4 py-2 border border-indigo-400 text-indigo-400 rounded-lg hover:bg-indigo-500 hover:text-white transition duration-300"
-            >
-              Register as Owner
-            </Link>
-          </p>
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/70 p-10 shadow-2xl shadow-indigo-950/20 backdrop-blur-xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,_102,_241,_0.24),_transparent_30%),_radial-gradient(circle_at_bottom_right,_rgba(168,_85,_247,_0.18),_transparent_22%)]"></div>
+          <div className="relative text-center">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+              Explore Our Premium Properties
+            </h1>
+            <p className="text-slate-300 font-medium text-lg max-w-2xl mx-auto leading-relaxed">
+              Looking to post your property? Create a listing in minutes and connect with quality renters across the city.
+            </p>
+            <div className="mt-8 inline-flex rounded-full bg-slate-950/90 border border-indigo-500/20 shadow-lg shadow-indigo-950/10">
+              <Link
+                to="/register"
+                className="px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300 hover:text-white hover:bg-indigo-500/90 rounded-full transition"
+              >
+                Register as Owner
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Property Cards */}

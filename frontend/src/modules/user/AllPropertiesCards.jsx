@@ -75,7 +75,7 @@ const AllPropertiesCards = ({ loggedIn }) => {
   };
 
   return (
-    <div className="p-6 text-white">
+    <div className="p-6 text-white animate-fade-in-up">
       {toast.show && (
         <Toast
           type={toast.type}
@@ -120,52 +120,55 @@ const AllPropertiesCards = ({ loggedIn }) => {
           filteredProperties.map((property) => (
             <div
               key={property._id}
-              className="bg-gray-800/70 border border-gray-700 rounded-lg shadow-lg hover:shadow-indigo-600/40 transition transform hover:-translate-y-1 overflow-hidden"
+              className="bg-slate-950/95 border border-indigo-500/10 rounded-[2rem] shadow-[0_20px_60px_-30px_rgba(56,189,248,0.65)] hover:shadow-[0_25px_70px_-35px_rgba(99,102,241,0.65)] transition-transform duration-300 transform hover:-translate-y-1 overflow-hidden"
             >
-              <img
-                src={`${process.env.VITE_API_URL || "http://localhost:8001"}${property.propertyImage[0]?.path}`}
-                alt="Property"
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-semibold text-lg text-white">{property.propertyAddress}</h3>
-                <p className="text-gray-400 text-sm">
-                  {property.propertyType} - {property.propertyAdType}
+              <div className="relative overflow-hidden">
+                <img
+                  src={`${process.env.VITE_API_URL || "http://localhost:8001"}${property.propertyImage[0]?.path}`}
+                  alt="Property"
+                  className="w-full h-44 object-cover brightness-90 hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent" />
+              </div>
+              <div className="p-5">
+                <h3 className="font-semibold text-xl text-white mb-1">{property.propertyAddress}</h3>
+                <p className="text-slate-400 text-sm mb-4">
+                  {property.propertyType} · {property.propertyAdType}
                 </p>
                 {loggedIn && (
-                  <>
-                    <p className="mt-2 text-sm">
-                      <b>Owner:</b> {property.ownerContact}
+                  <div className="space-y-2 text-sm text-slate-300 mb-4">
+                    <p>
+                      <span className="font-semibold text-slate-100">Owner:</span> {property.ownerContact}
                     </p>
-                    <p className="text-sm">
-                      <b>Availability:</b> {property.isAvailable}
+                    <p>
+                      <span className="font-semibold text-slate-100">Availability:</span> {property.isAvailable}
                     </p>
-                    <p className="text-sm">
-                      <b>Price:</b> ₹{property.propertyAmt}
+                    <p>
+                      <span className="font-semibold text-slate-100">Price:</span> ₹{property.propertyAmt}
                     </p>
-                  </>
+                  </div>
                 )}
                 {property.isAvailable === "Available" ? (
                   loggedIn ? (
                     <button
                       onClick={() => openModal(property)}
-                      className="mt-3 w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition"
+                      className="mt-3 w-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white py-3 rounded-2xl font-semibold shadow-xl shadow-indigo-500/20 hover:from-indigo-400 hover:to-violet-400 transition"
                     >
                       Get Info / Book
                     </button>
                   ) : (
-                    <p className="mt-2 text-yellow-400 text-xs">
+                    <p className="mt-2 text-amber-300 text-xs font-medium">
                       Login to see details
                     </p>
                   )
                 ) : (
-                  <p className="mt-2 text-red-400 text-xs">Not Available</p>
+                  <p className="mt-2 text-red-400 text-xs font-medium">Not Available</p>
                 )}
               </div>
             </div>
           ))
         ) : (
-          <p className="text-gray-400">No properties available at the moment.</p>
+          <p className="text-slate-400">No properties available at the moment.</p>
         )}
       </div>
 
