@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "../../apiConfig";
+import axios from "axios";
 import Toast from "../common/Toast";
-import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+
+
+axios.defaults.withCredentials = true;
 
 const AllUsers = () => {
   const [allUser, setAllUser] = useState([]);
@@ -19,7 +21,9 @@ const AllUsers = () => {
 
   const getAllUser = async () => {
     try {
-      const response = await axios.get("/api/admin/getallusers");
+      const response = await axios.get(
+        "http://localhost:8001/api/admin/getallusers"
+      );
       if (response.data.success) {
         setAllUser(response.data.data);
       } else {
@@ -39,7 +43,10 @@ const AllUsers = () => {
 
   const handleStatus = async (userid, status) => {
     try {
-      const res = await axios.post("/api/admin/handlestatus", { userid, status });
+      const res = await axios.post(
+        "http://localhost:8001/api/admin/handlestatus",
+        { userid, status }
+      );
 
       if (res.data.success) {
         showToast("success", "Status updated successfully");
@@ -54,7 +61,7 @@ const AllUsers = () => {
   };
 
   return (
-   <div className="overflow-x-auto relative mt-6 rounded-[2rem] border border-indigo-500/10 bg-slate-950/90 shadow-[0_30px_70px_-35px_rgba(15,23,42,0.9)] backdrop-blur-2xl p-4">
+   <div className="overflow-x-auto relative mt-6">
   {toast.show && (
     <Toast
       type={toast.type}
@@ -63,8 +70,8 @@ const AllUsers = () => {
     />
   )}
 
-  <table className="min-w-full border border-indigo-500/10 bg-slate-950/80 backdrop-blur-xl rounded-[1.75rem] overflow-hidden">
-    <thead className="bg-gradient-to-r from-indigo-500/80 to-violet-500/70 text-white">
+  <table className="min-w-full border border-gray-700 bg-gray-900/80 backdrop-blur-md shadow-2xl rounded-xl overflow-hidden">
+    <thead className="bg-indigo-600/80 text-white">
       <tr>
         <th className="py-3 px-4 text-left">User ID</th>
         <th className="py-3 px-4 text-center">Name</th>
@@ -80,29 +87,29 @@ const AllUsers = () => {
           <tr
             key={user._id}
             className={`transition duration-200 ${
-              index % 2 === 0 ? "bg-slate-800/50" : "bg-slate-900/50"
+              index % 2 === 0 ? "bg-gray-800/60" : "bg-gray-900/60"
             } hover:bg-indigo-500/20`}
           >
-            <td className="py-2 px-4 border-b border-slate-700 text-slate-200">
+            <td className="py-2 px-4 border-b border-gray-700 text-gray-200">
               {user._id}
             </td>
-            <td className="py-2 px-4 border-b border-slate-700 text-center text-slate-200">
+            <td className="py-2 px-4 border-b border-gray-700 text-center text-gray-200">
               {user.name}
             </td>
-            <td className="py-2 px-4 border-b border-slate-700 text-center text-slate-300">
+            <td className="py-2 px-4 border-b border-gray-700 text-center text-gray-300">
               {user.email}
             </td>
-            <td className="py-2 px-4 border-b border-slate-700 text-center text-indigo-400 font-medium">
+            <td className="py-2 px-4 border-b border-gray-700 text-center text-indigo-400 font-medium">
               {user.type}
             </td>
             <td
-              className={`py-2 px-4 border-b border-slate-700 text-center font-medium ${
+              className={`py-2 px-4 border-b border-gray-700 text-center font-medium ${
                 user.granted === "granted" ? "text-green-400" : "text-red-400"
               }`}
             >
               {user.granted}
             </td>
-            <td className="py-2 px-4 border-b border-slate-700 text-center">
+            <td className="py-2 px-4 border-b border-gray-700 text-center">
               {user.type === "Owner" && user.granted === "ungranted" && (
                 <button
                   onClick={() => handleStatus(user._id, "granted")}
@@ -126,7 +133,7 @@ const AllUsers = () => {
         <tr>
           <td
             colSpan="6"
-            className="text-center py-6 text-slate-400 font-medium italic"
+            className="text-center py-6 text-gray-400 font-medium italic"
           >
             No users found
           </td>

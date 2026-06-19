@@ -1,14 +1,19 @@
 import { message } from "antd";
 import React, { useState, useEffect } from "react";
-import axios from "../../../apiConfig";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {useNavigate} from "react-router-dom"
+
+axios.defaults.withCredentials = true; 
 
 const OwnerAllBookings = () => {
   const [allBookings, setAllBookings] = useState([]);
   const navigate = useNavigate();
  const getAllProperty = async () => {
     try {
-      const response = await axios.get("/api/owner/getallbookings");
+      const response = await axios.get(
+        "http://localhost:8001/api/owner/getallbookings",
+        { withCredentials: true }
+      );
 
       if (response.data.success) {
         setAllBookings(response.data.data);
@@ -34,8 +39,9 @@ const OwnerAllBookings = () => {
   const handleStatus = async (bookingId, propertyId, status) => {
     try {
       const res = await axios.post(
-        "/api/owner/handlebookingstatus",
-        { bookingId, propertyId, status }
+        "http://localhost:8001/api/owner/handlebookingstatus",
+        { bookingId, propertyId, status },
+        { withCredentials: true }
       );
 
       if (res.data.success) {
@@ -51,9 +57,9 @@ const OwnerAllBookings = () => {
   };
 
   return (
-    <div className="overflow-x-auto mt-6 rounded-[2rem] border border-indigo-500/10 bg-slate-950/90 backdrop-blur-2xl shadow-[0_30px_70px_-35px_rgba(15,23,42,0.9)] p-4">
-  <table className="min-w-full border border-indigo-500/10 rounded-[1.75rem] bg-slate-950/80 text-slate-300 overflow-hidden">
-    <thead className="bg-gradient-to-r from-indigo-500/80 to-violet-500/70 text-white">
+    <div className="overflow-x-auto mt-6">
+  <table className="min-w-full border border-gray-700 rounded-lg shadow-2xl bg-gray-900/80 backdrop-blur-md text-gray-300">
+    <thead className="bg-indigo-600/80 text-white">
       <tr>
         <th className="py-3 px-4 text-left">Booking ID</th>
         <th className="py-3 px-4 text-center">Property ID</th>
@@ -68,8 +74,8 @@ const OwnerAllBookings = () => {
         allBookings.map((booking, idx) => (
           <tr
             key={booking._id}
-            className={`border-b border-slate-700 transition duration-200 hover:bg-slate-800/50 ${
-              idx % 2 === 0 ? "bg-slate-800/40" : "bg-slate-900/40"
+            className={`border-b border-gray-700 transition duration-200 hover:bg-gray-800/50 ${
+              idx % 2 === 0 ? "bg-gray-800/40" : "bg-gray-900/40"
             }`}
           >
             <td className="py-3 px-4">{booking._id}</td>
@@ -112,7 +118,7 @@ const OwnerAllBookings = () => {
         <tr>
           <td
             colSpan={6}
-            className="py-6 px-4 text-center text-slate-400 italic"
+            className="py-6 px-4 text-center text-gray-400 italic"
           >
             No bookings available
           </td>
