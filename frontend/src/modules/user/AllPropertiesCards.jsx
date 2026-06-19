@@ -116,6 +116,8 @@ const AllPropertiesCards = ({ loggedIn }) => {
         >
           <option value="">All Types</option>
           <option value="commercial">Commercial</option>
+          <option value="house">House</option>
+          <option value="villa">Villa</option>
           <option value="land/plot">Land/Plot</option>
           <option value="residential">Residential</option>
         </select>
@@ -129,11 +131,21 @@ const AllPropertiesCards = ({ loggedIn }) => {
               key={property._id}
               className="bg-gray-800/70 border border-gray-700 rounded-lg shadow-lg hover:shadow-indigo-600/40 transition transform hover:-translate-y-1 overflow-hidden"
             >
-              <img
-                src={`http://localhost:8001${property.propertyImage[0]?.path}`}
-                alt="Property"
-                className="w-full h-40 object-cover"
-              />
+              {property.propertyImage?.[0]?.path ? (
+                <img
+                  src={
+                    property.propertyImage[0].path.startsWith("http")
+                      ? property.propertyImage[0].path
+                      : `http://localhost:8001${property.propertyImage[0].path}`
+                  }
+                  alt="Property"
+                  className="w-full h-40 object-cover"
+                />
+              ) : (
+                <div className="w-full h-40 bg-gray-700 flex items-center justify-center text-gray-300 text-sm font-medium">
+                  Image not available
+                </div>
+              )}
               <div className="p-4">
                 <h3 className="font-semibold text-lg text-white">{property.propertyAddress}</h3>
                 <p className="text-gray-400 text-sm">

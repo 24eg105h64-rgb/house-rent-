@@ -10,13 +10,19 @@ const AdminHome = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("users");
 
+  useEffect(() => {
+    if (!user || !user.userData) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/login");
   };
 
-if (!user || !user.userData) return null;
+  if (!user || !user.userData) return null;
 
   return (
 <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black flex flex-col">

@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from "axios";
 import Home from "./modules/common/Home";
 import Login from "./modules/common/Login";
 import Register from "./modules/common/Register";
@@ -23,7 +24,12 @@ function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   useEffect(() => {
+    axios.defaults.withCredentials = true;
     const storedUser = localStorage.getItem("user");
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${storedToken}`;
+    }
     if (storedUser) {
       try {
         const parsedUser = JSON.parse(storedUser);
@@ -45,16 +51,16 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/adminhome' element={<AdminHome />} />
+          <Route path='/admin/properties' element={<AdminAllProperty />} />
+          <Route path='/admin/bookings' element={<AdminAllBookings />} />
+          <Route path='/admin/users' element={<AllUsers />} />
           <Route path='/ownerhome' element={<OwnerHome />} />
+          <Route path='/owner/postproperty' element={<AddProperty />} />
+          <Route path='/owner/properties' element={<OwnerAllProperties />} />
+          <Route path='/owner/bookings' element={<OwnerAllBookings />} />
           <Route path='/renterhome' element={<RenterHome />} />
-          <Route path='/getallbookings' element={<AdminAllBookings />} />
-          <Route path='/getallproperties' element={<AdminAllProperty />} />
-          <Route path='/getallusers' element={<AllUsers />} />
-          <Route path='/postproperty' element={<AddProperty />} />
-          <Route path='/getallbookings' element={<OwnerAllBookings />} />
-          <Route path='/getallproperties' element={<OwnerAllProperties />} />
-          <Route path='/getallbookings' element={<RenterAllProperty />} />
-          <Route path='/getAllProperties' element={<AllPropertiesCards />} />
+          <Route path='/renter/bookings' element={<RenterAllProperty />} />
+          <Route path='/properties' element={<AllPropertiesCards />} />
         </Routes>
       </BrowserRouter>
     </div>

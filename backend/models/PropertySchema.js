@@ -25,8 +25,15 @@ const propertyModel = mongoose.Schema({
       type :Number ,
       default: 0,
    },
-   propertyImage: {
-      type: Object
+   propertyImage: [
+      {
+         filename: String,
+         path: String,
+      }
+   ],
+   isAvailable: {
+      type: String,
+      default: 'Available',
    },
    additionalInfo:{
       type: String,

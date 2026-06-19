@@ -30,13 +30,21 @@ const addPropertyController = async (req, res) => {
       message: "New Property has been stored",
     });
   } catch (error) {
-    console.log("Error in get All Users Controller ", error);
+    console.error("Error adding property:", error);
+    return res.status(500).send({
+      success: false,
+      message: "Failed to add property",
+      error: error.message,
+    });
   }
 };
 
 ///////////all properties of owner/////////
 const getAllOwnerPropertiesController = async (req, res) => {
-  const { userId } = req.body;
+  const userId = req.userId || req.body.userId;
+  if (!userId) {
+    return res.status(401).send({ success: false, message: 'Unauthorized' });
+  }
   try {
     const getAllProperties = await propertySchema.find();
     const updatedProperties = getAllProperties.filter(

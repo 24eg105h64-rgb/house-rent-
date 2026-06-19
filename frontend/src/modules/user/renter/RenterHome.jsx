@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../../../App";
 import PropTypes from "prop-types";
 import AllPropertiesCards from "../AllPropertiesCards";
@@ -21,7 +21,14 @@ CustomTabPanel.propTypes = {
 
 const RenterHome = () => {
   const user = useContext(UserContext);
+  const navigate = useNavigate();
   const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!user || !user.userData) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   if (!user || !user.userData) return null;
 

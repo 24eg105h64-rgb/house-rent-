@@ -16,6 +16,12 @@ const OwnerHome = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
 
+  useEffect(() => {
+    if (!user || !user.userData) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+
   if (!user || !user.userData) return null;
 
   const handleLogOut = () => {

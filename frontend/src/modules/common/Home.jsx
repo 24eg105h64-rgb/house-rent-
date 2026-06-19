@@ -97,6 +97,12 @@ const Home = () => {
             >
               Register as Owner
             </Link>
+            <Link
+              to="/login"
+              className="ml-2 px-4 py-2 bg-indigo-400 text-black rounded-lg hover:bg-indigo-500 hover:text-white transition duration-300"
+            >
+              Login as Owner
+            </Link>
           </p>
         </div>
 

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Toast from "../common/Toast";
+import { UserContext } from "../../App";
 
 axios.defaults.withCredentials = true;
 
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setUserData, setUserLoggedIn } = useContext(UserContext);
   const [data, setData] = useState({ email: "", password: "" });
   const [toast, setToast] = useState({ show: false, type: "", message: "" });
 
@@ -24,38 +26,42 @@ const Login = () => {
     e.preventDefault();
 
     if (!data.email || !data.password) {
-      showToast("error", "Please fill all fields");
+      return showToast("error", "Please fill all fields");
     }
 
     try {
-      const res = await axios.post("http://localhost:8001/api/user/login", data, { withCredentials: true });
+      const res = await axios.post(
+        "http://localhost:8001/api/user/login",
+        data,
+        { withCredentials: true }
+      );
       if (res.data.success) {
         showToast("success", res.data.message);
         localStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("token", res.data.token);
+        axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
+        if (setUserData) setUserData(res.data.user);
+        if (setUserLoggedIn) setUserLoggedIn(true);
 
         const user = res.data.user;
-        setTimeout(() => {
-          switch (user.type) {
-            case "Admin":
-              navigate("/adminhome");
-              break;
-            case "Renter":
-              navigate("/renterhome");
-              break;
-            case "Owner":
-              if (user.granted === "ungranted") {
-                showToast("error", "Your account is not yet confirmed by the admin");
-              } else {
-                navigate("/ownerhome");
-              }
-              break;
-            default:
-              navigate("/login");
-              break;
-          }
-
-          window.location.reload();
-        }, 1000);
+        switch (user.type) {
+          case "Admin":
+            navigate("/adminhome");
+            break;
+          case "Renter":
+            navigate("/renterhome");
+            break;
+          case "Owner":
+            if (user.granted === "ungranted") {
+              showToast("error", "Your account is not yet confirmed by the admin");
+            } else {
+              navigate("/ownerhome");
+            }
+            break;
+          default:
+            navigate("/login");
+            break;
+        }
       } else {
         showToast("error", res.data.message);
       }

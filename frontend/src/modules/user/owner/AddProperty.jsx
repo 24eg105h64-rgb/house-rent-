@@ -104,6 +104,8 @@ function AddProperty() {
         >
           <option disabled>Choose...</option>
           <option value="residential">Residential</option>
+          <option value="house">House</option>
+          <option value="villa">Villa</option>
           <option value="commercial">Commercial</option>
           <option value="land/plot">Land/Plot</option>
         </select>
